@@ -1,6 +1,6 @@
 # 🩺 KidneyGuard AI
 
-An AI-powered web application that predicts the risk of kidney disease using Machine Learning.
+AI-powered Kidney Disease Risk Prediction System using Machine Learning and Streamlit.
 
 
 
