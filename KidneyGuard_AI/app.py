@@ -9,6 +9,7 @@ import joblib
 from PIL import Image
 from datetime import datetime
 import os
+from pathlib import Path
 
 # -----------------------------
 # Page Configuration
@@ -22,8 +23,12 @@ st.set_page_config(
 # -----------------------------
 # Load Model
 # -----------------------------
-model = joblib.load("models/model.pkl")
-history_file = "prediction_history.csv"
+
+
+BASE_DIR = Path(__file__).resolve().parent
+
+model = joblib.load(BASE_DIR / "models" / "model.pkl")
+history_file = BASE_DIR / "prediction_history.csv"
 
 if not os.path.exists(history_file):
 
