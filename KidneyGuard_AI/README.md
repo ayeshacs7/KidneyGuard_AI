@@ -111,22 +111,22 @@ Always consult a qualified healthcare professional for medical advice.
 
 ## 🏠 Home Page
 
-![Home](images/home.png)
+![Home](screenshots/home.png)
 
 ---
 
 ## 📊 Prediction Result
 
-![Prediction](images/prediction.png)
+![Prediction](screenshots/prediction.png)
 
 ---
 
 ## 📄 PDF Download
 
-![PDF Download](images/pdf_download.png)
+![PDF Download](screenshots/pdf_download.png)
 
 ---
 
 ## 📑 Sample PDF Report
 
-![Report](images/report.png)
+![Report](screenshots/report.png)
