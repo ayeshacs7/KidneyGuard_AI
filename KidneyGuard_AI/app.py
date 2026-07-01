@@ -8,8 +8,10 @@ import pandas as pd
 import joblib
 from PIL import Image
 from datetime import datetime
-import os
+
 from pathlib import Path
+import os
+
 
 # -----------------------------
 # Page Configuration
@@ -45,7 +47,9 @@ if not os.path.exists(history_file):
 # -----------------------------
 # Load Image
 # -----------------------------
-image = Image.open("images/kidney.png")
+BASE_DIR = Path(__file__).resolve().parent
+
+image = Image.open(BASE_DIR / "images" / "kidney.png")
 
 # -----------------------------
 # Header
@@ -62,11 +66,14 @@ with col2:
 # -----------------------------
 # Sidebar
 # -----------------------------
-st.sidebar.title("🩺 KidneyGuard AI")
+st.sidebar.markdown("---")
+st.sidebar.header("ℹ️ About")
 
-st.sidebar.info(
-    "KidneyGuard AI helps estimate kidney disease risk using Machine Learning."
-)
+st.sidebar.info("""
+**KidneyGuard AI** is an AI-powered web application that estimates the risk of kidney disease using machine learning.
+
+⚠️ This application is intended for educational purposes only and is not a substitute for professional medical advice.
+""")
 
 st.sidebar.markdown("---")
 
@@ -197,36 +204,12 @@ htn = st.selectbox(
 )
 
 st.markdown("---")
-col1, col2, col3 = st.columns(3)
-
-with col1:
-    st.metric("📂 Dataset", "400")
-
-with col2:
-    st.metric("🎯 Accuracy", "100%")
-
-with col3:
-    st.metric("🤖 Algorithm", "Random Forest")
-    st.markdown("---")
-
-st.header("📊 Model Statistics")
-
-col1, col2, col3 = st.columns(3)
-
-with col1:
-    st.metric("📂 Dataset", "400 Patients")
-
-with col2:
-    st.metric("🎯 Model Accuracy", "100%")
-
-with col3:
-    st.metric("🤖 Algorithm", "Random Forest")
 
 # ============================================
 # Prediction
 # ============================================
 
-if st.button("🔍 Predict Kidney Disease Risk"):
+if st.button("🔍 Analyze Kidney Disease Risk"):
 
     input_data = pd.DataFrame([{
         "Bp": bp,
@@ -357,21 +340,9 @@ It was developed as an educational AI project using:
 - 🌐 Streamlit
 """)
 
-st.caption("🩺 KidneyGuard AI v1.0")
-
-st.caption("Developed by Ayesha Shafiq ❤️")
-
-st.caption("For Educational Purposes Only")
 st.markdown("---")
 
-st.markdown(
-"""
-### 👨‍💻 Developed By
-
-**Ayesha Shafiq**
-
-🩺 KidneyGuard AI v1.0
-
-Built with ❤️ using Python, Streamlit & Machine Learning.
-"""
+st.caption(
+    "🩺 KidneyGuard AI v1.1 | Developed by Ayesha Shafiq | For Educational Purposes Only"
 )
+
