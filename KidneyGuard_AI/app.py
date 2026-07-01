@@ -385,12 +385,16 @@ st.warning(
     )
 
 st.markdown("---")
-with open("Kidney_Report.pdf", "rb") as pdf_file:
+if os.path.exists("Kidney_Report.pdf"):
+    st.markdown("---")
+
+    with open("Kidney_Report.pdf", "rb") as pdf_file:
         st.download_button(
             label="📄 Download Kidney Health Report",
             data=pdf_file,
             file_name="Kidney_Report.pdf",
             mime="application/pdf"
+        
         )
 
 st.header("ℹ️ About KidneyGuard AI")
