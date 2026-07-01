@@ -1,47 +1,66 @@
 # 🩺 KidneyGuard AI
 
-## Early Kidney Disease Risk Prediction System
+An AI-powered web application that predicts the risk of kidney disease using Machine Learning.
 
-KidneyGuard AI is a Machine Learning project that predicts the risk of Chronic Kidney Disease (CKD) using patient medical data.
+## 🌐 Live Demo
 
-## 🚀 Features
+https://kidneyguardai-t3ce5je7ytbajgufywcp6p.streamlit.app/
 
-- Predict Kidney Disease Risk
-- Machine Learning Model
-- Interactive Streamlit Web App
-- Health & Lifestyle Suggestions
-- Risk Visualization
-- Professional User Interface
+## 📂 GitHub Repository
+
+https://github.com/ayeshacs7/KidneyGuard_AI
+
+---
+
+## 📖 Project Overview
+
+KidneyGuard AI is a machine learning-based healthcare application that estimates the risk of kidney disease using patient clinical data.
+
+The application provides:
+- AI-powered kidney disease prediction
+- Kidney health score
+- Risk percentage
+- BMI calculator
+- Personalized health insights
+- Diet recommendations
+- PDF report generation
+- Prediction history
+
+---
+
+## ✨ Features
+
+- 🩺 Kidney Disease Risk Prediction
+- 📊 Risk Score
+- 💚 Kidney Health Score
+- ⚖️ BMI Calculator
+- 🤖 AI Health Insights
+- 🥗 Diet Recommendations
+- 📄 PDF Report Download
+- 📜 Prediction History
+- 🌐 Streamlit Web Interface
+
+---
 
 ## 🛠️ Technologies Used
 
 - Python
+- Streamlit
+- Scikit-learn
 - Pandas
 - NumPy
-- Scikit-learn
-- Streamlit
+- Joblib
+- Matplotlib
 - Plotly
-- Git
-- GitHub
 
-## 📂 Project Structure
+---
 
-```
-KidneyGuard_AI
-│
-├── dataset
-├── models
-├── app.py
-├── train_model.py
-├── requirements.txt
-├── README.md
-└── .gitignore
-```
+## 👩‍💻 Developer
+
+**Ayesha Shafiq**
+
+---
 
 ## ⚠️ Disclaimer
 
-This application is developed for educational purposes only.
-
-It is **NOT** a medical diagnosis tool.
-
-Always consult a qualified healthcare professional for medical advice.
+This application is developed for educational purposes only and should not replace professional medical advice.

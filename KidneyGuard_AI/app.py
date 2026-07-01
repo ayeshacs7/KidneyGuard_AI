@@ -11,7 +11,53 @@ from datetime import datetime
 
 from pathlib import Path
 import os
+from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer
+from reportlab.lib.styles import getSampleStyleSheet
+from reportlab.lib.enums import TA_CENTER
+from reportlab.lib.colors import darkblue
+from reportlab.lib.units import inch
 
+def create_pdf_report(
+    prediction_text,
+    risk_score,
+    health_score
+):
+    styles = getSampleStyleSheet()
+
+    title = styles["Heading1"]
+    title.alignment = TA_CENTER
+    title.textColor = darkblue
+    heading = styles["Heading2"]
+    normal = styles["BodyText"]
+    pdf = SimpleDocTemplate("Kidney_Report.pdf")
+    story = []
+    story.append(Paragraph("🩺 KidneyGuard AI", title))
+    story.append(Paragraph("Kidney Health Assessment Report", heading))
+    story.append(Spacer(1, 15))
+    story.append(
+        Paragraph(
+            f"<b>Date:</b> {datetime.now().strftime('%d-%m-%Y %H:%M')}",
+            normal
+        )
+    )
+
+    story.append(Spacer(1, 10))
+
+    story.append(Paragraph(f"<b>Prediction:</b> {prediction_text}", normal))
+    story.append(Paragraph(f"<b>Risk Score:</b> {risk_score}%", normal))
+    story.append(Paragraph(f"<b>Kidney Health Score:</b> {health_score}/100", normal))
+    
+
+    
+
+    story.append(
+        Paragraph(
+            "<b>Developed By:</b> Ayesha Shafiq",
+            normal
+        )
+    )
+
+    pdf.build(story)
 
 # -----------------------------
 # Page Configuration
@@ -232,6 +278,19 @@ if st.button("🔍 Analyze Kidney Disease Risk"):
     risk_percent = round(probability * 100, 2)
 
     health_score = round(100 - risk_percent, 2)
+    prediction_text = (
+    "High Risk of Kidney Disease"
+    if prediction == 1
+    else "Low Risk of Kidney Disease"
+)
+    
+
+
+    create_pdf_report(
+        prediction_text,
+        risk_percent,
+        health_score
+    )
 
     st.metric("📊 Risk Score", f"{risk_percent}%")
     st.progress(risk_percent / 100)
@@ -243,87 +302,96 @@ if st.button("🔍 Analyze Kidney Disease Risk"):
 
     if prediction == 1:
 
-        st.error("🔴 High Risk of Kidney Disease")
+            st.error("🔴 High Risk of Kidney Disease")
 
-        if risk_percent >= 80:
-            st.error("🚨 Please consult a kidney specialist immediately.")
+            if risk_percent >= 80:
+                st.error("🚨 Please consult a kidney specialist immediately.")
 
-        st.subheader("🤖 AI Health Insights")
+            st.subheader("🤖 AI Health Insights")
 
-        if bp > 140:
-            st.write("🩸 High Blood Pressure detected.")
+            if bp > 140:
+                st.write("🩸 High Blood Pressure detected.")
 
-        if sc > 1.2:
-            st.write("🧪 High Serum Creatinine detected.")
+            if sc > 1.2:
+                st.write("🧪 High Serum Creatinine detected.")
 
-        if hemo < 12:
-            st.write("🩸 Low Hemoglobin detected.")
+            if hemo < 12:
+                st.write("🩸 Low Hemoglobin detected.")
 
-        if al > 1:
-            st.write("🧫 Albumin level is abnormal.")
+            if al > 1:
+                st.write("🧫 Albumin level is abnormal.")
 
-        if htn == 1:
-            st.write("❤️ Hypertension increases kidney disease risk.")
+            if htn == 1:
+                st.write("❤️ Hypertension increases kidney disease risk.")
 
-        st.subheader("🥗 Diet Recommendation")
+            st.subheader("🥗 Diet Recommendation")
 
-        st.success("""
-✅ Apples
+            st.success("""
+    ✅ Apples
 
-✅ Cabbage
+    ✅ Cabbage
 
-✅ Cauliflower
+    ✅ Cauliflower
 
-✅ Fish
+    ✅ Fish
 
-✅ Olive Oil
+    ✅ Olive Oil
 
-✅ Drink water as advised by your doctor.
-""")
+    ✅ Drink water as advised by your doctor.
+    """)
 
-        st.error("""
-❌ Avoid Salt
+            st.error("""
+    ❌ Avoid Salt
 
-❌ Junk Food
+    ❌ Junk Food
 
-❌ Soft Drinks
+    ❌ Soft Drinks
 
-❌ Smoking
+    ❌ Smoking
 
-❌ Alcohol
-""")
+    ❌ Alcohol
+    """)
 
     else:
 
-        st.success("🟢 Low Risk of Kidney Disease")
+            st.success("🟢 Low Risk of Kidney Disease")
 
-        st.subheader("🤖 AI Health Insights")
+            st.subheader("🤖 AI Health Insights")
 
-        st.success("Most health indicators look normal.")
+            st.success("Most health indicators look normal.")
 
-        st.write("✅ Blood Pressure looks acceptable.")
-        st.write("✅ Kidney function appears stable.")
-        st.write("✅ Continue healthy lifestyle.")
+            st.write("✅ Blood Pressure looks acceptable.")
+            st.write("✅ Kidney function appears stable.")
+            st.write("✅ Continue healthy lifestyle.")
 
-        st.subheader("🥗 Healthy Lifestyle")
+            st.subheader("🥗 Healthy Lifestyle")
 
-        st.success("""
-🥗 Balanced Diet
+            st.success("""
+    🥗 Balanced Diet
 
-🚶 Daily Walk
+    🚶 Daily Walk
 
-💧 Drink Water
+    💧 Drink Water
 
-😴 Sleep 7-8 Hours
+    😴 Sleep 7-8 Hours
 
-🩺 Regular Checkup
-""")
+    🩺 Regular Checkup
+    """)
+    st.markdown("---")
 
-    st.warning(
+    
+st.warning(
         "This tool is for educational purposes only and should not replace professional medical advice."
     )
 
 st.markdown("---")
+with open("Kidney_Report.pdf", "rb") as pdf_file:
+        st.download_button(
+            label="📄 Download Kidney Health Report",
+            data=pdf_file,
+            file_name="Kidney_Report.pdf",
+            mime="application/pdf"
+        )
 
 st.header("ℹ️ About KidneyGuard AI")
 
