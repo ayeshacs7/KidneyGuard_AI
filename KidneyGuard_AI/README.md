@@ -2,7 +2,7 @@
 
 ## Early Kidney Disease Risk Prediction System
 
-KidneyGuard AI is a Machine Learning project that predicts the risk of Chronic Kidney Disease (CKD) using patient medical data.
+KidneyGuard AI is a machine learning–based web application that predicts kidney disease risk using clinical parameters. It provides AI-powered risk assessment, health insights, diet recommendations, BMI calculation, and downloadable PDF reports. Built with Python, Scikit-learn, and Streamlit.
 
 ## 🚀 Features
 
