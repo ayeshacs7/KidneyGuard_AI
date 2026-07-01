@@ -2,7 +2,7 @@
 
 An AI-powered web application that predicts the risk of kidney disease using Machine Learning.
 
-## 🌐 Live Demo
+
 
 https://kidneyguardai-t3ce5je7ytbajgufywcp6p.streamlit.app/
 
@@ -63,4 +63,12 @@ The application provides:
 
 ## ⚠️ Disclaimer
 
+<<<<<<< HEAD
 This application is developed for educational purposes only and should not replace professional medical advice.
+=======
+This application is developed for educational purposes only.
+
+It is **NOT** a medical diagnosis tool.
+
+Always consult a qualified healthcare professional for medical advice.
+>>>>>>> beadfe54ef7962996994a703e01f187125fecf67
